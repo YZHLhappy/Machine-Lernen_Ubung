@@ -1,11 +1,11 @@
 %2020.5.19 PCA U4 Beispiel
 clear all
-%% ÔªÊı¾İÉú³ÉµÄÍ¼
+%% å…ƒæ•°æ®ç”Ÿæˆçš„å›¾
 x = [2.5, 0.5, 2.2, 1.9, 3.1, 2.3, 2, 1, 1.5, 1.1];
 y = [2.4, 0.7, 2.9, 2.2, 3.0, 2.7, 1.6, 1.1, 1.6, 0.9];
 figure(1)
 plot(x,y,'*')
-title('ÔªÊı¾İÉú³ÉµÄÍ¼')
+title('å…ƒæ•°æ®ç”Ÿæˆçš„å›¾')
 %% 1.Schatze Mittelwert und normalisiere Daten auf Mittelwert 0
 u_x = mean(x);
 u_y = mean(y);
@@ -25,18 +25,18 @@ Kovarianzmatrix = 1/length(DataAdjust)*DataAdjust*DataAdjust';
 [V,D] = eig(Kovarianzmatrix);
 D_max = D(2,2); V_max = [V(1,2);V(2,2)];
 D_min = D(1,1); V_min = [V(1,1);V(2,1)];
-%% Êä³öÍ¼Ïñ
-Transformation_D_max =D_max* V_max'*DataAdjust;  %1x1 * 1x2 * 2x10 = 1x10,´Ë¹ı³ÌÓÉÓÚÖ»ÓĞÒ»¸ö»ùµ×£¬¹Ê×ª»»ºó½µÒ»¸öÎ¬¶È
-figure(2)  %ÒÔ³¤ÖáÎªÖ÷Öá×ª»»
+%% è¾“å‡ºå›¾åƒ
+Transformation_D_max =D_max* V_max'*DataAdjust;  %1x1 * 1x2 * 2x10 = 1x10,æ­¤è¿‡ç¨‹ç”±äºåªæœ‰ä¸€ä¸ªåŸºåº•ï¼Œæ•…è½¬æ¢åé™ä¸€ä¸ªç»´åº¦
+figure(2)  %ä»¥é•¿è½´ä¸ºä¸»è½´è½¬æ¢
 plot(0,Transformation_D_max,'*')
-title('ÒÔ³¤ÖáÎª»ùµ×µÄ×ª»»')
+title('ä»¥é•¿è½´ä¸ºåŸºåº•çš„è½¬æ¢')
 
-figure(3)  %ÒÔ¶ÌÖáÎª×ª»»
-Transformation_D_min =D_min* V_min'*DataAdjust;  %1x1 * 1x2 * 2x10 = 1x10£¬´Ë¹ı³ÌÓÉÓÚÖ»ÓĞÒ»¸ö»ùµ×£¬¹Ê×ª»»ºó½µÒ»¸öÎ¬¶È
+figure(3)  %ä»¥çŸ­è½´ä¸ºè½¬æ¢
+Transformation_D_min =D_min* V_min'*DataAdjust;  %1x1 * 1x2 * 2x10 = 1x10ï¼Œæ­¤è¿‡ç¨‹ç”±äºåªæœ‰ä¸€ä¸ªåŸºåº•ï¼Œæ•…è½¬æ¢åé™ä¸€ä¸ªç»´åº¦
 plot(Transformation_D_min,0,'*')
-title('ÒÔ¶ÌÖáÎª»ùµ×µÄ×ª»»')
+title('ä»¥çŸ­è½´ä¸ºåŸºåº•çš„è½¬æ¢')
 
-figure(4)  %ÔªÊı¾İÒÔĞÂ»ùµ×Îª×ø±êÏµÏÂµÄÍ¼
+figure(4)  %å…ƒæ•°æ®ä»¥æ–°åŸºåº•ä¸ºåæ ‡ç³»ä¸‹çš„å›¾
 a = atan(0.6779/0.7352);
 matrix = [cos(a) sin(a);-sin(a),cos(a)];
 % lamta = [D_max 0;0 D_min];
@@ -50,7 +50,7 @@ for i =1:10
     plot(Transformation_D_sum(1,i),Transformation_D_sum(2,i),'*')
     xlim([-2,2])
     ylim([-2,2])
-    title('ÔªÊı¾İÒÔĞÂ»ùµ×Îª×ø±êÏµÏÂµÄÍ¼')
+    title('å…ƒæ•°æ®ä»¥æ–°åŸºåº•ä¸ºåæ ‡ç³»ä¸‹çš„å›¾')
     hold on
 end
 
@@ -61,7 +61,7 @@ for i =1:10
     %plot(x_normalisiere, y_normalisiere,'b*')
     plot(achse_x(1,i),achse_x(2,i),'r*')
     plot(achse_y(1,i),achse_y(2,i),'b*')
-    title('PCAÖØ½¨ºóµÄÍ¼')
+    title('PCAé‡å»ºåçš„å›¾')
     hold on
 end
 
